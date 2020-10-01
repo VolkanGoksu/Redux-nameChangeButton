@@ -9,7 +9,8 @@ class App extends Component {
      this.onUserUpdate=this.onUserUpdate.bind(this)
   }
   onUserUpdate(){
-    this.props.dispatch(userUpdate('Ayaz'));
+    this.props.onUserUpdate('Ayaz');
+  //  this.props.dispatch(userUpdate('Ayaz')); //mapDispatchToprops kullandıgım için iptal
   }
   render() {
     console.log(this.props);
@@ -22,7 +23,10 @@ class App extends Component {
   }
 }
 
+const mapDispatchToProps={
+  onUserUpdate:userUpdate
+}
 const mapStateToProps=(state)=>{
   return state;
 }
-export default connect(mapStateToProps) (App);
+export default connect(mapStateToProps,mapDispatchToProps) (App);
